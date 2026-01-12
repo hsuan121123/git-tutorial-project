@@ -1,22 +1,60 @@
 public class Main {
     public static void main(String[] args) {
         Shop[] shops = new Shop[]{
-            new Shop("ºÖ³Ó«F"),
-            new Shop("Âù¤ë"),
-            new Shop("ªúªC¨§¼ß")
+            new Shop(
+                "ºÖ³Ó«F",
+                new Product[]{
+                    new Product("¸g¨å½Þ±Æ©w­¹®MÀ\", 292),
+                    new Product("¶}¹B½Þ±Æ©w­¹", 247),
+                    new Product("­»¶p¬µ¸y¤º¦×©w­¹", 247)
+                }
+            ),
+            new Shop(
+                "Âù¤ë",
+                new Product[]{
+                    new Product("Âû¥Ä©Õ¶º", 35),
+                    new Product("­»©Õ·NÄÑ", 40)
+                }
+            ),
+            new Shop(
+                "ªúªC¨§¼ß",
+                new Product[]{
+                    new Product("«p¿N»æ", 40),
+                    new Product("«p»æ§¨³J", 55),
+                    new Product("¨§¼ß", 45),
+                    new Product("ÁW¦Ì¼ß", 45),
+                    new Product("ÄÐ¨§¼ß", 60)
+                }
+            )
         };
 
         System.out.println("Åwªï¨Ï¥ÎNTUB­qÀ\¨t²Î¡A¥H¤U¬°¥iÂIÀ\ªº©±®a¡G");
+        System.out.println();
         for (Shop shop : shops) {
-            System.out.println(shop.name);
+            System.out.println(shop.name + "¡G");
+            for (Product product : shop.products) {
+                System.out.println("\t" + product.name + "\t-\t$" + String.format("%,d", product.price) + "¤¸");
+            }
         }
     }
 }
 
 class Shop {
     public final String name;
+    public Product[] products;
 
-    public Shop(String name) {
+    public Shop(String name, Product[] products) {
         this.name = name;
+        this.products = products;
+    }
+}
+
+class Product {
+    public final String name;
+    public final int price;
+
+    public Product(String name, int price) {
+        this.name = name;
+        this.price = price;
     }
 }
